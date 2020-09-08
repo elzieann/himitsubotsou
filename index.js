@@ -5,7 +5,7 @@ const BotCommands = require("./modules/BotCommands.js");
 const client = new Discord.Client();
 
 client.on("ready", function() {
-    client.channels.cache.get("752736749779681321").send("Bot loaded. Version: " + config.VERSION);
+    client.channels.cache.find(channel => channel.name === "botspam").send("Bot loaded. Version: " + config.VERSION);
 })
 
 client.on("message", function(message) {
