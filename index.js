@@ -17,7 +17,7 @@ client.on("message", function(message) {
             message.channel.send("Current franelcrew members: ", "")
         }
 
-        if (command == "player") {
+        if (command == "characters") {
             var player = "";
 
             if (args.length > 0 && args[0].length > 0) {
