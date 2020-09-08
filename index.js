@@ -12,11 +12,6 @@ client.on("message", function(message) {
     const args = commandBody.split(' ');
     const command = args.shift().toLowerCase();
 
-    if (command == "ping") {
-        const timeTaken = Date.now() - message.createdTimestamp;
-        message.reply(`Pong! This message had a latency of ${timeTaken}ms.`);    
-    }
-
     if (command == "franelcrew") {
         message.channel.send("Current franelcrew members: ", "")
     }
@@ -30,6 +25,18 @@ client.on("message", function(message) {
             switch (message.author.username) {
                 case "FrozenPeach":
                     player = "Frozen";
+                    break;
+                case "Elzie":
+                    player = "Elzie";
+                    break;
+                case "ROSA":
+                    player = "Rosa";
+                    break;
+                case "Meg":
+                    player = "Meg";
+                    break;
+                case "Nineveh":
+                    player = "Nin";
                     break;
             }
         }
