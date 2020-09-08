@@ -1,0 +1,81 @@
+dist: trusty
+sudo: false
+
+language: node_js
+node_js:
+  - '10'
+
+addons:
+  chrome: stable
+  ssh_known_hosts:
+    - host.lgbt
+    - 104.155.163.15
+
+cache:
+  directories:
+    - ./node_modules
+
+install:
+  - npm install
+
+script:
+  - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox || travis_terminate 1;
+  - ng build --prod
+before_install:
+  - openssl aes-256-cbc -K $encrypted_4f6570bf1a14_key -iv $encrypted_4f6570bf1a14_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
+  - eval "$(ssh-agent -s)"
+  - chmod 600 /tmp/deploy_rsa
+  - ssh-add /tmp/deploy_rsa
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/afrozenpeach/ mattie@host.lgbt:~/discord/himitsubotsou/
+  on:
+    branch: master
+    tags: true
+ Build Config
+{
+  "language": "node_js",
+  "os": [
+    "linux"
+  ],
+  "dist": "trusty",
+  "sudo": false,
+  "node_js": [
+    "10"
+  ],
+  "addons": {
+    "chrome": "stable",
+    "ssh_known_hosts": [
+      "host.lgbt",
+      "104.155.163.15"
+    ]
+  },
+  "cache": {
+    "directories": [
+      "./node_modules"
+    ]
+  },
+  "install": [
+    "npm install"
+  ],
+  "before_install": [
+    "openssl aes-256-cbc -K $encrypted_4f6570bf1a14_key -iv $encrypted_4f6570bf1a14_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d",
+    "eval \"$(ssh-agent -s)\"",
+    "chmod 600 /tmp/deploy_rsa",
+    "ssh-add /tmp/deploy_rsa"
+  ],
+  "deploy": [
+    {
+      "provider": "script",
+      "skip_cleanup": true,
+      "script": "rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/afrozenpeach/ mattie@host.lgbt:~/discord/himitsubotsou/ && pm2 restart index.js",
+      "on": {
+        "branch": [
+          "master"
+        ],
+        "tags": true
+      }
+    }
+  ]
+}
