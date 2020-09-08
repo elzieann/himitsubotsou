@@ -1,12 +1,13 @@
 const discord = require("discord.js");
 
 class BotCommands {
-    constructor(message) {
+    constructor(message, client) {
         this.message = message;
+        this.client = client;
     }
 
     franelcrew(args) {        
-        message.channel.send("Current franelcrew members: ")
+        this.message.channel.send("Current franelcrew members: ")
     }
 
     characters(args) {
@@ -17,7 +18,7 @@ class BotCommands {
         if (args.length > 0 && args[0].length > 0) {
             player = args[0].toLocaleLowerCase();
         } else {
-            switch (message.author.username) {
+            switch (this.message.author.username) {
                 case "FrozenPeach":
                     player = "Frozen";
                     break;
@@ -42,7 +43,7 @@ class BotCommands {
                 characters = ["Anemone", "Calaith", "Gebann", "Inara", "Kim", "Lenore", "Lionel", "Loki", "Marigold", "Martha", "Rae"];
                 break;
             default:
-                message.channel.send("Player not found.");
+                this.message.channel.send("Player not found.");
                 return;
         }
 
@@ -57,7 +58,7 @@ class BotCommands {
             finalMessage += ", ";
         })
 
-        message.channel.send(player + "'s characters: " + finalMessage);
+        this.message.channel.send(player + "'s characters: " + finalMessage);
     }
 }
 

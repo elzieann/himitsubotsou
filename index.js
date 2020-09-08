@@ -3,7 +3,6 @@ const config = require("./config.json");
 const botCommands = require("./modules/BotCommands.js");
 
 const client = new discord.Client();
-
 client.on("ready", function() {
     client.channels.cache.get("752736749779681321").send("Bot loaded. Version: " + config.VERSION);
 })
@@ -18,8 +17,10 @@ client.on("message", function(message) {
         const args = commandBody.split(' ');
         const command = args.shift().toLowerCase();
 
-        if (typeof botCommands[command] === "function") {
-            botCommands[command](args);
+        const commands = new botCommands(message, client);
+
+        if (typeof commands[command] === "function") {
+            commands[command](args);
         }
     } catch (error) {
         message.channel.send("Error: " + error.message)
