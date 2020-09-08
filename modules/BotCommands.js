@@ -1,5 +1,3 @@
-const discord = require("discord.js");
-
 class BotCommands {    
     constructor(message) {
         this.message = message;
