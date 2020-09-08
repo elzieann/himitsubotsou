@@ -18,7 +18,9 @@ client.on("message", function(message) {
         const args = commandBody.split(' ');
         const command = args.shift().toLowerCase();
 
-        window[command](args);
+        if (command in BotCommands && typeof BotCommands[command] === "function") {
+            BotCommands[command](args);
+        }
     } catch (error) {
         message.channel.send("Error: " + error.message)
     }
