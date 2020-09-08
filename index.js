@@ -64,8 +64,10 @@ client.on("message", function(message) {
                 finalMessage += character;
 
                 if (emoji != undefined) {
-                    finalMessage += ` ${emoji}, `;
+                    finalMessage += `${emoji}`;
                 }
+
+                finalMessage += ", ";
             })
 
             message.channel.send(player + "'s characters: " + finalMessage);
