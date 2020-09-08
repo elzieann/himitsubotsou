@@ -39,7 +39,6 @@ class BotCommands {
 
         switch (player.toLocaleLowerCase()) {
             case "frozen":
-            case "frozenpeach":
                 characters = ["Anemone", "Calaith", "Gebann", "Inara", "Kim", "Lenore", "Lionel", "Loki", "Marigold", "Martha", "Rae"];
                 break;
             default:
