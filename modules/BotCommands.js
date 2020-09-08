@@ -22,6 +22,9 @@ class BotCommands {
                 case "Elzie":
                     player = "Elzie";
                     break;
+                case "dots":
+                    player = "Dots";
+                    break;
                 case "ROSA":
                     player = "Rosa";
                     break;
