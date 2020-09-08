@@ -60,8 +60,12 @@ client.on("message", function(message) {
             }
 
             characters.forEach(function(character) {
-                var emoji = client.emojis.cache.find(emoji => emoji.name === character);                
-                finalMessage += character + ` ${emoji}, `;
+                var emoji = client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase());
+                finalMessage += character;
+
+                if (emoji != undefined) {
+                    finalMessage += ` ${emoji}, `;
+                }
             })
 
             message.channel.send(player + "'s characters: " + finalMessage);
