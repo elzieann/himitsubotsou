@@ -25,7 +25,7 @@ before_install:
   - ssh-add /tmp/deploy_rsa
 deploy:
   provider: script
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/afrozenpeach/ mattie@host.lgbt:~/discord/himitsubotsou
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ mattie@host.lgbt:~/discord/himitsubotsou
   on:
     branch: master
     tags: true
