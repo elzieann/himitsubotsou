@@ -49,7 +49,7 @@ client.on("message", function(message) {
             switch (player.toLocaleLowerCase()) {
                 case "frozen":
                 case "frozenpeach":
-                    var characters = "Anemone, Calaith, Gebann, Lionel, Loki, Marigold, Martha, Rae"
+                    var characters = "Anemone, Calaith, Gebann, Inara, Kim, Lenore, Lionel, Loki, Marigold, Martha, Rae"
                     break;
                 default:
                     message.channel.send("Player not found.");
