@@ -2,6 +2,7 @@ const discord = require("discord.js");
 const config = require("./config.json");
 
 const client = new discord.Client();
+var emoji = [];
 
 client.on("ready", function() {
     client.channels.cache.get("752736749779681321").send("Bot loaded. Version: " + config.VERSION);
@@ -23,6 +24,8 @@ client.on("message", function(message) {
 
         if (command == "characters") {
             var player = "";
+            var characters = [];
+            var finalMessage = "";
 
             if (args.length > 0 && args[0].length > 0) {
                 player = args[0].toLocaleLowerCase();
@@ -49,14 +52,19 @@ client.on("message", function(message) {
             switch (player.toLocaleLowerCase()) {
                 case "frozen":
                 case "frozenpeach":
-                    var characters = "Anemone, Calaith :calaith:, Gebann :gebann:, Inara :inara:, Kim :kim:, Lenore :lenore:, Lionel, Loki, Marigold :marigold:, Martha, Rae :rae:"
+                    characters = ["Anemone", "Calaith", "Gebann", "Inara", "Kim", "Lenore", "Lionel", "Loki", "Marigold", "Martha", "Rae"];
                     break;
                 default:
                     message.channel.send("Player not found.");
                     return;
             }
 
-            message.channel.send(player + "'s characters: " + characters);
+            characters.forEach(function(character) {
+                var emoji = client.emojis.cache.find(emoji => emoji.name === character);                
+                finalMessage += character + ` ${emoji}, `;
+            })
+
+            message.channel.send(player + "'s characters: " + finalMessage);
         }
     } catch (error) {
         message.channel.send("Error: " + error.message)
