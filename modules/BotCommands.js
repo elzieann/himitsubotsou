@@ -1,7 +1,7 @@
 const discord = require("discord.js");
 
 class BotCommands {
-    constructor(message, client) {
+    constructor(message) {
         this.message = message;
         this.client = client;
     }
@@ -48,7 +48,7 @@ class BotCommands {
         }
 
         characters.forEach(function(character) {
-            var emoji = client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase());
+            var emoji = message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase());
             finalMessage += character;
 
             if (emoji != undefined) {

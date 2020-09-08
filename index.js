@@ -17,7 +17,7 @@ client.on("message", function(message) {
         const args = commandBody.split(' ');
         const command = args.shift().toLowerCase();
 
-        const commands = new botCommands(message, client);
+        const commands = new botCommands(message);
 
         if (typeof commands[command] === "function") {
             commands[command](args);
