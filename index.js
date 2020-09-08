@@ -4,7 +4,7 @@ const config = require("./config.json");
 const client = new discord.Client();
 
 client.on("ready", function() {
-    client.channels.get("botspam").send("Bot loaded. Version: " + config.VERSION);
+    client.channels.cache.get("752736749779681321").send("Bot loaded. Version: " + config.VERSION);
 })
 
 client.on("message", function(message) {
