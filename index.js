@@ -3,6 +3,10 @@ const config = require("./config.json");
 
 const client = new discord.Client();
 
+client.on("ready", function() {
+    client.channels.get("botspam").send("Bot loaded. Version: " + config.VERSION);
+})
+
 client.on("message", function(message) {
     try {
         if (message.author.bot) return;
