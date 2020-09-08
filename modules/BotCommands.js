@@ -46,7 +46,7 @@ class BotCommands {
                 return;
         }
 
-        characters.forEach(function(character, i, this) {
+        characters.forEach(function(character) {
             var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase());
             finalMessage += character;
 
@@ -55,7 +55,7 @@ class BotCommands {
             }
 
             finalMessage += ", ";
-        })
+        }, this)
 
         this.message.channel.send(player + "'s characters: " + finalMessage);
     }
