@@ -47,7 +47,7 @@ class BotCommands {
         }
 
         characters.forEach(function(character) {
-            var emoji = message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase());
+            var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase());
             finalMessage += character;
 
             if (emoji != undefined) {
