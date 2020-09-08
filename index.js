@@ -20,6 +20,8 @@ client.on("message", function(message) {
 
         if (typeof botCommands[command] === "function") {
             botCommands[command](args);
+        } else {
+            message.channel.send("Command not found.");
         }
     } catch (error) {
         message.channel.send("Error: " + error.message)
