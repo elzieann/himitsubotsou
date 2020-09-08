@@ -2,7 +2,6 @@ const discord = require("discord.js");
 const config = require("./config.json");
 
 const client = new discord.Client();
-var emoji = [];
 
 client.on("ready", function() {
     client.channels.cache.get("752736749779681321").send("Bot loaded. Version: " + config.VERSION);
