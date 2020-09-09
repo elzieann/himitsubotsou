@@ -4,12 +4,12 @@ class BotCommands {
     }
 
     franelcrew(args) {        
-        this.message.channel.send("Current franelcrew members: \n" +
-                                  "*Rosa:* Aileen, Celeste, Crionna, Eabhan (Eabh), Korvin, Maeryn/\"Ethniu,\" Nessa, Suaimeas\n" + 
-                                  "*Elzie:* Amalea, Elliot, Gabrial (Gabe), Jace, Lauren, Patience, Sawyer\n" +
-                                  "*Dots:* Faith, Jonathan, Kail, Prudence\n" + 
-                                  "*Nin:* Keagan, Labhri\n" +
-                                  "*Meg:* Lawrence");
+        this.message.channel.send("```Current franelcrew members: \n" +
+                                  "**Rosa:** Aileen, Celeste, Crionna, Eabhan (Eabh), Korvin, Maeryn/\"Ethniu,\" Nessa, Suaimeas\n" + 
+                                  "**Elzie:** Amalea, Elliot, Gabrial (Gabe), Jace, Lauren, Patience, Sawyer\n" +
+                                  "**Dots:** Faith, Jonathan, Kail, Prudence\n" + 
+                                  "**Nin:** Keagan, Labhri\n" +
+                                  "**Meg:** Lawrence```");
     }
 
     characters(args) {
