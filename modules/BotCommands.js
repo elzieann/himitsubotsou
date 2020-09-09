@@ -39,7 +39,7 @@ class BotCommands {
 
         switch (player.toLocaleLowerCase()) {
             case "frozen":
-                characters = ["Anemone", "Calaith", "Gebann", "Inara", "Kim", "Lenore", "Lionel", "Loki", "Marigold", "Martha", "Rae"];
+                characters = ["Anemone", "Calaith", "Gebann", "Inara", "Kimberly", "Lenore", "Lionel", "Loki", "Marigold", "Martha", "Rae"];
                 break;
             default:
                 this.message.channel.send("Player not found.");
