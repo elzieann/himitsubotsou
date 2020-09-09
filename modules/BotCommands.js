@@ -10,11 +10,11 @@ class BotCommands {
             .setTitle("Current Franelcrew members")
             .addFields(
                 {
-                    "Rosa": "Aileen, Celeste, Crionna, Eabhan (Eabh), Korvin, Maeryn/\"Ethniu,\" Nessa, Suaimeas",
-                    "Elzie": "Amalea, Elliot, Gabrial (Gabe), Jace, Lauren, Patience, Sawyer",
-                    "Dots": "Faith, Jonathan, Kail, Prudence",
-                    "Nin": "Keagan, Labhri",
-                    "Meg": "Lawrence"
+                    name: "Rosa", value: "Aileen, Celeste, Crionna, Eabhan (Eabh), Korvin, Maeryn/\"Ethniu,\" Nessa, Suaimeas",
+                    name: "Elzie", value: "Amalea, Elliot, Gabrial (Gabe), Jace, Lauren, Patience, Sawyer",
+                    name: "Dots", value: "Faith, Jonathan, Kail, Prudence",
+                    name: "Nin", value: "Keagan, Labhri",
+                    name: "Meg", value: "Lawrence"
                 }
             )
 
