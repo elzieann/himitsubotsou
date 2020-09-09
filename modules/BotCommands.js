@@ -4,12 +4,20 @@ class BotCommands {
     }
 
     franelcrew(args) {        
-        this.message.channel.send("```Current franelcrew members: \n" +
-                                  "**Rosa:** Aileen, Celeste, Crionna, Eabhan (Eabh), Korvin, Maeryn/\"Ethniu,\" Nessa, Suaimeas\n" + 
-                                  "**Elzie:** Amalea, Elliot, Gabrial (Gabe), Jace, Lauren, Patience, Sawyer\n" +
-                                  "**Dots:** Faith, Jonathan, Kail, Prudence\n" + 
-                                  "**Nin:** Keagan, Labhri\n" +
-                                  "**Meg:** Lawrence```");
+        var embed = Discord.MessageEmbed()
+            .setColor("#fcba03")
+            .setTitle("Current Franelcrew members")
+            .addFields(
+                {
+                    "Rosa": "Aileen, Celeste, Crionna, Eabhan (Eabh), Korvin, Maeryn/\"Ethniu,\" Nessa, Suaimeas",
+                    "Elzie": "Amalea, Elliot, Gabrial (Gabe), Jace, Lauren, Patience, Sawyer",
+                    "Dots": "Faith, Jonathan, Kail, Prudence",
+                    "Nin": "Keagan, Labhri",
+                    "Meg": "Lawrence"
+                }
+            )
+
+        this.message.channel.send(embed);
     }
 
     characters(args) {
