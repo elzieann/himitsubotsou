@@ -30,10 +30,10 @@ class BotCommands {
                 }
 
                 characterString += ", ";
-            });
+            }, this);
 
             embed.addField(playerCharacters.player, characterString)
-        });
+        }, this);
 
         this.message.channel.send(embed);
     }
