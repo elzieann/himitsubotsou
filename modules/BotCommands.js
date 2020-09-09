@@ -16,7 +16,7 @@ class BotCommands {
                     name: "Nin", value: "Keagan, Labhri",
                     name: "Meg", value: "Lawrence"
                 }
-            )
+            );
 
         this.message.channel.send(embed);
     }
