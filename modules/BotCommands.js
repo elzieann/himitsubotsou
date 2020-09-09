@@ -9,13 +9,11 @@ class BotCommands {
             .setColor("#fcba03")
             .setTitle("Current Franelcrew members")
             .addFields(
-                {
-                    name: "Rosa", value: "Aileen, Celeste, Crionna, Eabhan (Eabh), Korvin, Maeryn/\"Ethniu,\" Nessa, Suaimeas",
-                    name: "Elzie", value: "Amalea, Elliot, Gabrial (Gabe), Jace, Lauren, Patience, Sawyer",
-                    name: "Dots", value: "Faith, Jonathan, Kail, Prudence",
-                    name: "Nin", value: "Keagan, Labhri",
-                    name: "Meg", value: "Lawrence"
-                }
+                { name: "Rosa", value: "Aileen, Celeste, Crionna, Eabhan (Eabh), Korvin, Maeryn/\"Ethniu,\" Nessa, Suaimeas" },
+                { name: "Elzie", value: "Amalea, Elliot, Gabrial (Gabe), Jace, Lauren, Patience, Sawyer" },
+                { name: "Dots", value: "Faith, Jonathan, Kail, Prudence" },
+                { name: "Nin", value: "Keagan, Labhri" },
+                { name: "Meg", value: "Lawrence" }
             );
 
         this.message.channel.send(embed);
