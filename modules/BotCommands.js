@@ -4,17 +4,36 @@ class BotCommands {
         this.message = message;
     }
 
-    franelcrew(args) {        
+    franelcrew(args) {
+        var franelcrew = [
+            { player: "Rosa", characters: ["Aileen", "Celeste", "Crionna", "Eabhan (Eabh)", "Korvin", "Maeryn/\"Ethniu\"", "Nessa", "Suaimeas"] },
+            { player: "Elzie", characters: ["Amalea", "Elliot", "Gabrial (Gabe)", "Jace", "Lauren", "Patience", "Sawyer"] },
+            { player: "Dots", characters: ["Faith", "Jonathan", "Kail", "Prudence"] },
+            { player: "Nin", characters: ["Keagan", "Labhri"] },
+            { player: "Meg", characters: ["Lawrence"] }
+        ];        
+
         var embed =  new Discord.MessageEmbed()
             .setColor("#fcba03")
-            .setTitle("Current Franelcrew members")
-            .addFields(
-                { name: "Rosa", value: "Aileen, Celeste, Crionna, Eabhan (Eabh), Korvin, Maeryn/\"Ethniu,\" Nessa, Suaimeas" },
-                { name: "Elzie", value: "Amalea, Elliot, Gabrial (Gabe), Jace, Lauren, Patience, Sawyer" },
-                { name: "Dots", value: "Faith, Jonathan, Kail, Prudence" },
-                { name: "Nin", value: "Keagan, Labhri" },
-                { name: "Meg", value: "Lawrence" }
-            );
+            .setTitle("Current Franelcrew members");
+
+        franelcrew.forEach(function(playerCharacters) {
+            var characterString = "";
+
+            playerCharacters.characters.forEach(function(character) {
+                var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase());
+
+                characterString += character;
+
+                if (emoji != undefined) {
+                    characterString += ` ${emoji}`;
+                }
+
+                characterString += ", ";
+            });
+
+            embed.addField(playerCharacters.player, characterString)
+        });
 
         this.message.channel.send(embed);
     }
