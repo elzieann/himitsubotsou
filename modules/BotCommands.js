@@ -5,7 +5,7 @@ class BotCommands {
     }
 
     franelcrew(args) {        
-        var embed = Discord.MessageEmbed()
+        var embed =  new Discord.MessageEmbed()
             .setColor("#fcba03")
             .setTitle("Current Franelcrew members")
             .addFields(
