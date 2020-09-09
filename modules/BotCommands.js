@@ -1,5 +1,4 @@
-const Discord = require('.discord.js');
-
+const Discord = require('discord.js');
 class BotCommands {    
     constructor(message) {
         this.message = message;
