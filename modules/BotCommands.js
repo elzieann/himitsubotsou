@@ -81,7 +81,7 @@ class BotCommands {
                 break;
             case "elzie":
                 characters = [];
-                user = this.message.client.users.cache.find(user => user.username == "Elzie");
+                user = this.message.client.users.cache.find(user => user.username == "belix");
                 break;                
             case "meg":
                 characters = [];
@@ -89,7 +89,7 @@ class BotCommands {
                 break;
             case "nin":
                 characters = [];
-                user = this.message.client.users.cache.find(user => user.username == "Ninevah");
+                user = this.message.client.users.cache.find(user => user.username == "willfor");
                 break;
             case "rosa":
                 characters = [];
@@ -115,7 +115,7 @@ class BotCommands {
             .setColor("#32a8a4")
             .setTitle(player.slice(0, 1).toLocaleUpperCase() + player.slice(1).toLocaleLowerCase() + "'s characters")
             .setDescription(finalMessage.slice(0, -2))
-            .setThumbnail(user.avatarURL("webp", true, "64"));
+            .setThumbnail(user.displayAvatarURL("webp", true, "64"));
 
         this.message.channel.send(embed);
     }
