@@ -20,7 +20,8 @@ export default class BotCommands {
 
         franelcrew.forEach(function(playerCharacters) {
             var characterString = "";
-
+            
+            playerCharacters.player.sort();
             playerCharacters.characters.sort();
 
             playerCharacters.characters.forEach(function(character) {
