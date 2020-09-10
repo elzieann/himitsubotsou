@@ -1,6 +1,6 @@
-const Discord = require("discord.js");
+import { MessageEmbed } from "discord.js";
 
-class BotCommands {    
+export default class BotCommands {    
     constructor(message) {
         this.message = message;
     }
@@ -14,7 +14,7 @@ class BotCommands {
             { player: "Meg", characters: ["Lawrence"] }
         ];        
 
-        var embed =  new Discord.MessageEmbed()
+        var embed =  new MessageEmbed()
             .setColor("#fcba03")
             .setTitle("Current Franelcrew members");
 
@@ -116,7 +116,7 @@ class BotCommands {
             finalMessage += ", ";
         }, this)
 
-        var embed = new Discord.MessageEmbed()
+        var embed = new MessageEmbed()
             .setTitle(player.slice(0, 1).toLocaleUpperCase() + player.slice(1).toLocaleLowerCase() + (player.slice(-1) == "s" ? "'" : "'s") + " characters")
             .setDescription(finalMessage.slice(0, -2));
 
@@ -131,5 +131,3 @@ class BotCommands {
         this.message.channel.send(embed);
     }
 }
-
-module.exports = BotCommands;
