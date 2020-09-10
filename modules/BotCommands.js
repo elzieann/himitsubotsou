@@ -36,7 +36,7 @@ export default class BotCommands {
             { player: "Dots", characters: ["ebony"] }
         ]
 
-        this.#characterEmbed(eire, "#90ee90", "Current Eina members");
+        this.#characterEmbed(eina, "#90ee90", "Current Eina members");
     }
 
     characters(args) {
