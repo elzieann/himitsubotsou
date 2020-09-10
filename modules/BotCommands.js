@@ -18,6 +18,16 @@ export default class BotCommands {
             .setColor("#fcba03")
             .setTitle("Current Franelcrew members");
 
+        franelcrew.sort(function(a, b) { 
+            if (a.player > b.player) {
+                return -1;
+            } else if (a.player < b.player) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
         franelcrew.forEach(function(playerCharacters) {
             var characterString = "";
             
