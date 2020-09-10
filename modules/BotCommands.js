@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+
 class BotCommands {    
     constructor(message) {
         this.message = message;
@@ -41,6 +42,7 @@ class BotCommands {
     characters(args) {
         var player = "";
         var characters = [];
+        var user = undefined;
         var finalMessage = "";
 
         if (args.length > 0 && args[0].length > 0) {
@@ -71,6 +73,27 @@ class BotCommands {
         switch (player.toLocaleLowerCase()) {
             case "frozen":
                 characters = ["Anemone", "Calaith", "Gebann", "Inara", "Kimberly", "Lenore", "Lionel", "Loki", "Marigold", "Martha", "Rae"];
+                user = this.message.client.users.find(user => user.username == "FrozenPeach");
+                break;
+            case "dots":
+                characters = [];
+                user = this.message.client.users.find(user => user.username == "dots");
+                break;
+            case "elzie":
+                characters = [];
+                user = this.message.client.users.find(user => user.username == "Elzie");
+                break;                
+            case "meg":
+                characters = [];
+                user = this.message.client.users.find(user => user.username == "Meg");
+                break;
+            case "nin":
+                characters = [];
+                user = this.message.client.users.find(user => user.username == "Ninevah");
+                break;
+            case "rosa":
+                characters = [];
+                user = this.message.client.users.find(user => user.username == "ROSA");
                 break;
             default:
                 this.message.channel.send("Player not found.");
@@ -88,7 +111,13 @@ class BotCommands {
             finalMessage += ", ";
         }, this)
 
-        this.message.channel.send(player + "'s characters: " + finalMessage.slice(0, -2));
+        var embed = Discord.MessageEmbed()
+            .setColor("#32a8a4")
+            .setTitle(player + "'s characters")
+            .setDescription(finalMessage.slice(0, -2))
+            .setThumbnail(user.defaultAvatarURL);
+
+        this.message.channel.send(embed);
     }
 }
 
