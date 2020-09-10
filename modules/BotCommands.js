@@ -19,9 +19,9 @@ export default class BotCommands {
             .setTitle("Current Franelcrew members");
 
         franelcrew.sort(function(a, b) { 
-            if (a.player > b.player) {
+            if (a.player < b.player) {
                 return -1;
-            } else if (a.player < b.player) {
+            } else if (a.player > b.player) {
                 return 1;
             } else {
                 return 0;
