@@ -62,7 +62,7 @@ export default class BotCommands {
                 case "rosa":
                     player = "Rosa";
                     break;
-                case "Meg":
+                case "meg":
                     player = "Meg";
                     break;
                 case "wheelfor":
