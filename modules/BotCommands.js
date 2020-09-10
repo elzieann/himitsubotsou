@@ -5,6 +5,12 @@ export default class BotCommands {
         this.message = message;
     }
 
+    help(args) {
+        var functions = this.#getAllMethodNames(this);
+
+        this.message.channel.send(functions.join(", "));
+    }
+
     franelcrew(args) {
         var franelcrew = [
             { player: "Rosa", characters: ["Aileen", "Celeste", "Crionna", "Eabhan (Eabh)", "Korvin", "Maeryn/\"Ethniu\"", "Nessa", "Suaimeas"] },
@@ -169,5 +175,14 @@ export default class BotCommands {
         }, this);
 
         this.message.channel.send(embed);
+    }
+
+    #getAllMethodNames(obj) {
+        let methods = new Set();
+        while (obj = Reflect.getPrototypeOf(obj)) {
+            let keys = Reflect.ownKeys(obj)
+            keys.forEach((k) => methods.add(k));
+        }
+        return methods;
     }
 }
