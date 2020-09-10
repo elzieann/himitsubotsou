@@ -14,11 +14,7 @@ export default class BotCommands {
             { player: "Meg", characters: ["Lawrence"] }
         ];
 
-        var embed =  new MessageEmbed()
-            .setColor("#fcba03")
-            .setTitle("Current Franelcrew members");
-
-        this.#characterEmbed(embed, franelcrew);
+        this.#characterEmbed(franelcrew, "#fcba03", "Current Franelcrew members");
     }
 
     characters(args) {
@@ -115,7 +111,12 @@ export default class BotCommands {
         this.message.channel.send(embed);
     }
 
-    #characterEmbed(embed, playerCharacters) {
+    #characterEmbed(playerCharacters, color, title) {
+
+        var embed =  new MessageEmbed()
+            .setColor(color)
+            .setTitle(title);
+            
         playerCharacters.sort(function(a, b) { 
             if (a.player < b.player) {
                 return -1;
