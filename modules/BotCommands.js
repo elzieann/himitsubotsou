@@ -29,7 +29,12 @@ export default class BotCommands {
             return props
         }
         
-        this.message.channel.send(getAllMethods(this).join(", "));
+        var embed = new MessageEmbed()
+            .setColor("#ff0000")
+            .setTitle("Available commands")
+            .setDescription(getAllMethods(this).join(", "));
+
+        this.message.channel.send(embed);
     }
 
     franelcrew(args) {
