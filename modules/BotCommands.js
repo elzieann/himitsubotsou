@@ -113,7 +113,7 @@ class BotCommands {
 
         var embed = new Discord.MessageEmbed()
             .setColor("#32a8a4")
-            .setTitle(player.slice(0, 1).toLocaleUpperCase + player.slice(1).toLocaleLowerCase + "'s characters")
+            .setTitle(player.slice(0, 1).toLocaleUpperCase() + player.slice(1).toLocaleLowerCase() + "'s characters")
             .setDescription(finalMessage.slice(0, -2))
             .setThumbnail(user.avatarURL("webp", true, "64"));
 
