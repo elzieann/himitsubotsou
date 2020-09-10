@@ -111,7 +111,7 @@ class BotCommands {
             finalMessage += ", ";
         }, this)
 
-        var embed = Discord.MessageEmbed()
+        var embed = new Discord.MessageEmbed()
             .setColor("#32a8a4")
             .setTitle(player + "'s characters")
             .setDescription(finalMessage.slice(0, -2))
