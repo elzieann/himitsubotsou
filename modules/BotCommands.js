@@ -114,8 +114,11 @@ class BotCommands {
         var embed = new Discord.MessageEmbed()
             .setColor("#32a8a4")
             .setTitle(player.slice(0, 1).toLocaleUpperCase() + player.slice(1).toLocaleLowerCase() + "'s characters")
-            .setDescription(finalMessage.slice(0, -2))
-            .setThumbnail(user.displayAvatarURL("webp", true, "64"));
+            .setDescription(finalMessage.slice(0, -2));
+
+        if (user != undefined) {
+            embed.setThumbnail(user.displayAvatarURL("webp", true, "64"));
+        }
 
         this.message.channel.send(embed);
     }
