@@ -8,7 +8,7 @@ client.on("ready", function() {
     if (Config.VERSION) {
         client.channels.cache.find(channel => channel.name === "botspam").send("Bot loaded. Version: " + Config.VERSION);
     }
-})
+});
 
 client.on("message", function(message) {
     try {
