@@ -117,7 +117,7 @@ class BotCommands {
         }, this)
 
         var embed = new Discord.MessageEmbed()
-            .setTitle(player.slice(0, 1).toLocaleUpperCase() + player.slice(1).toLocaleLowerCase() + (player.slice(-1) == "s" ? "'" : + "'s") + " characters")
+            .setTitle(player.slice(0, 1).toLocaleUpperCase() + player.slice(1).toLocaleLowerCase() + (player.slice(-1) == "s" ? "'" : "'s") + " characters")
             .setDescription(finalMessage.slice(0, -2));
 
         if (color != "") {            
