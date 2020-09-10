@@ -75,17 +75,17 @@ class BotCommands {
             case "frozen":
                 characters = ["Anemone", "Calaith", "Gebann", "Inara", "Kimberly", "Lenore", "Lionel", "Loki", "Marigold", "Martha", "Rae"];
                 user = this.message.client.users.cache.find(user => user.username == "FrozenPeach");
-                color = "#32a8a4"
+                color = "#32a8a4";
                 break;
             case "dots":
                 characters = [];
                 user = this.message.client.users.cache.find(user => user.username == "stormbourne");
-                color = "#ff0000"
+                color = "#a70058";
                 break;
             case "elzie":
                 characters = [];
                 user = this.message.client.users.cache.find(user => user.username == "belix");
-                color = "#008000"
+                color = "#008000";
                 break;                
             case "meg":
                 characters = [];
@@ -98,7 +98,7 @@ class BotCommands {
             case "rosa":
                 characters = [];
                 user = this.message.client.users.cache.find(user => user.username == "ROSA");
-                color = "#800080"
+                color = "#800080";
                 break;
             default:
                 this.message.channel.send("Player not found.");
@@ -117,7 +117,7 @@ class BotCommands {
         }, this)
 
         var embed = new Discord.MessageEmbed()
-            .setTitle(player.slice(0, 1).toLocaleUpperCase() + player.slice(1).toLocaleLowerCase() + "'s characters")
+            .setTitle(player.slice(0, 1).toLocaleUpperCase() + player.slice(1).toLocaleLowerCase() + (player.slice(-1) == "s" ? "" : + "'s") + " characters")
             .setDescription(finalMessage.slice(0, -2));
 
         if (color != "") {            
