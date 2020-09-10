@@ -18,37 +18,7 @@ export default class BotCommands {
             .setColor("#fcba03")
             .setTitle("Current Franelcrew members");
 
-        franelcrew.sort(function(a, b) { 
-            if (a.player < b.player) {
-                return -1;
-            } else if (a.player > b.player) {
-                return 1;
-            } else {
-                return 0;
-            }
-        });
-
-        franelcrew.forEach(function(playerCharacters) {
-            var characterString = "";
-            
-            playerCharacters.characters.sort();
-
-            playerCharacters.characters.forEach(function(character) {
-                var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
-
-                characterString += character;
-
-                if (emoji != undefined) {
-                    characterString += ` ${emoji}`;
-                }
-
-                characterString += ", ";
-            }, this);
-
-            embed.addField(playerCharacters.player, characterString.slice(0, -2))
-        }, this);
-
-        this.message.channel.send(embed);
+        this.#characterEmbed(franelcrew);
     }
 
     characters(args) {
@@ -141,6 +111,40 @@ export default class BotCommands {
         if (user != undefined) {
             embed.setThumbnail(user.displayAvatarURL("webp", true, "64"));
         }
+
+        this.message.channel.send(embed);
+    }
+
+    #characterEmbed(playerCharacters) {
+        playerCharacters.sort(function(a, b) { 
+            if (a.player < b.player) {
+                return -1;
+            } else if (a.player > b.player) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        playerCharacters.forEach(function(pcs) {
+            var characterString = "";
+            
+            pcs.characters.sort();
+
+            pcs.characters.forEach(function(character) {
+                var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
+
+                characterString += character;
+
+                if (emoji != undefined) {
+                    characterString += ` ${emoji}`;
+                }
+
+                characterString += ", ";
+            }, this);
+
+            embed.addField(pcs.player, characterString.slice(0, -2))
+        }, this);
 
         this.message.channel.send(embed);
     }
