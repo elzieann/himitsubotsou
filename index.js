@@ -22,6 +22,7 @@ client.on("message", function(message) {
 
         const botCommands = new BotCommands(message);
 
+        //If the command is a public function of botCommands, do the thing
         if (typeof botCommands[command] === "function") {
             botCommands[command](args);
         }
