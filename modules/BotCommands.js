@@ -21,7 +21,7 @@ export default class BotCommands {
         franelcrew.forEach(function(playerCharacters) {
             var characterString = "";
 
-            playerCharacters.sort();
+            playerCharacters.characters.sort();
 
             playerCharacters.characters.forEach(function(character) {
                 var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
