@@ -12,10 +12,12 @@ client.on("ready", function() {
 
 client.on("message", function(message) {
     try {
+        //Ignore this and other bots' messages
         if (message.author.bot) return;
 
+        //Ignore anything without the prefix
         if (!message.content.startsWith(Config.PREFIX)) return;
-
+        
         const commandBody = message.content.slice(Config.PREFIX.length);
         const args = commandBody.split(' ');
         const command = args.shift().toLowerCase();

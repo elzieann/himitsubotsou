@@ -79,6 +79,8 @@ export default class BotCommands {
         var user = undefined;
         var finalMessage = "";
 
+        //If there is an arg find the characters for that player
+        //Otherwise find the characters for the player that activated the command
         if (args.length > 0 && args[0].length > 0) {
             player = args[0].toLocaleLowerCase();
         } else {
@@ -104,6 +106,7 @@ export default class BotCommands {
             }
         }
 
+        //Player preferences - TO DO: Pull from database
         switch (player.toLocaleLowerCase()) {
             case "frozen":
                 characters = ["Anemone", "Calaith", "Gebann", "Inara", "Kimberly", "Lenore", "Lionel", "Loki", "Marigold", "Martha", "Rae"];
@@ -140,6 +143,7 @@ export default class BotCommands {
 
         characters.sort();
 
+        //Find emojis for each character - emoji must be a custom emoji upload with the character's proper name
         characters.forEach(function(character) {
             var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
             finalMessage += character;
@@ -166,6 +170,7 @@ export default class BotCommands {
         this.message.channel.send(embed);
     }
 
+    //Takes a list of players/characters, a color, and a title, and creates a custom embed
     #characterEmbed(playerCharacters, color, title) {
         var embed =  new MessageEmbed()
             .setColor(color)
@@ -186,6 +191,7 @@ export default class BotCommands {
             
             pcs.characters.sort();
 
+            //For each character find a matching emoji if possible - must be the character's proper name
             pcs.characters.forEach(function(character) {
                 var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
 
