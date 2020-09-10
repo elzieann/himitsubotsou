@@ -6,6 +6,7 @@ export default class BotCommands {
     }
 
     help(args) {
+        //Thanks for the snippet https://stackoverflow.com/a/35033472
         const getAllMethods = (obj) => {
             let props = []
         
