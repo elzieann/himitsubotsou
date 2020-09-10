@@ -115,7 +115,7 @@ class BotCommands {
             .setColor("#32a8a4")
             .setTitle(player.slice(0, 1).toLocaleUpperCase + player.slice(1).toLocaleLowerCase + "'s characters")
             .setDescription(finalMessage.slice(0, -2))
-            .setThumbnail(user.defaultAvatarURL);
+            .setThumbnail(user.avatarURL("webp", true, "256"));
 
         this.message.channel.send(embed);
     }
