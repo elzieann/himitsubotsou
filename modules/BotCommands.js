@@ -17,6 +17,17 @@ export default class BotCommands {
         this.#characterEmbed(franelcrew, "#fcba03", "Current Franelcrew members");
     }
 
+    hanalan(args) {
+        var hanalanCommons = [
+            { player: "Frozen", characters: ["Lenore", "Inara", "Kimberly"] },
+            { player: "Dots", characters: ["Mark", "Eri"] },
+            { player: "Elzie", characters: ["Demi", "Daisy"] },
+            { player: "Rosa", characters: ["Annie", "Anton", "Nathan"] }
+        ]
+
+        this.#characterEmbed(hanalanCommons, "#90ee90", "Current Hanalan commons members");
+    }
+
     characters(args) {
         var player = "";
         var characters = [];
@@ -112,11 +123,10 @@ export default class BotCommands {
     }
 
     #characterEmbed(playerCharacters, color, title) {
-
         var embed =  new MessageEmbed()
             .setColor(color)
             .setTitle(title);
-            
+
         playerCharacters.sort(function(a, b) { 
             if (a.player < b.player) {
                 return -1;
