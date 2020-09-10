@@ -12,7 +12,7 @@ export default class BotCommands {
             { player: "Dots", characters: ["Faith", "Jonathan", "Kail", "Prudence"] },
             { player: "Nin", characters: ["Keagan", "Labhri"] },
             { player: "Meg", characters: ["Lawrence"] }
-        ];        
+        ];
 
         var embed =  new MessageEmbed()
             .setColor("#fcba03")
