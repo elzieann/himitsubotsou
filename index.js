@@ -1,8 +1,8 @@
-const Discord = require("discord.js");
-const Config = require("./config.json");
-const BotCommands = require("./modules/BotCommands.js");
+import { Client } from "discord.js";
+import { Config } from "./config.js";
+import BotCommands from "./modules/BotCommands.js";
 
-const client = new Discord.Client();
+const client = new Client();
 
 client.on("ready", function() {
     if (Config.VERSION) {
@@ -30,4 +30,4 @@ client.on("message", function(message) {
     }
 });
 
-client.login(config.BOT_TOKEN);
+client.login(Config.BOT_TOKEN);
