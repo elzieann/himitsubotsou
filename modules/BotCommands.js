@@ -77,7 +77,7 @@ class BotCommands {
                 break;
             case "dots":
                 characters = [];
-                user = this.message.client.users.cache.find(user => user.username == "dots");
+                user = this.message.client.users.cache.find(user => user.username == "stormbourne");
                 break;
             case "elzie":
                 characters = [];
