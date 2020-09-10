@@ -105,6 +105,8 @@ export default class BotCommands {
                 return;
         }
 
+        characters.sort();
+
         characters.forEach(function(character) {
             var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
             finalMessage += character;
