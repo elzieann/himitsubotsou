@@ -78,7 +78,7 @@ class BotCommands {
                 color = "#32a8a4";
                 break;
             case "dots":
-                characters = [];
+                characters = ["Kail", "Faith", "Prudence", "Jonathan", "Ebony", "Eri", "Christopher", "Mark", "Irving", "Lysander", "Verity"];
                 user = this.message.client.users.cache.find(user => user.username == "stormbourne");
                 color = "#a70058";
                 break;
