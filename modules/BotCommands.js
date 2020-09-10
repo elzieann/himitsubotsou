@@ -73,27 +73,27 @@ class BotCommands {
         switch (player.toLocaleLowerCase()) {
             case "frozen":
                 characters = ["Anemone", "Calaith", "Gebann", "Inara", "Kimberly", "Lenore", "Lionel", "Loki", "Marigold", "Martha", "Rae"];
-                user = this.message.client.users.find(user => user.username == "FrozenPeach");
+                user = this.message.client.users.cache.find(user => user.username == "FrozenPeach");
                 break;
             case "dots":
                 characters = [];
-                user = this.message.client.users.find(user => user.username == "dots");
+                user = this.message.client.users.cache.find(user => user.username == "dots");
                 break;
             case "elzie":
                 characters = [];
-                user = this.message.client.users.find(user => user.username == "Elzie");
+                user = this.message.client.users.cache.find(user => user.username == "Elzie");
                 break;                
             case "meg":
                 characters = [];
-                user = this.message.client.users.find(user => user.username == "Meg");
+                user = this.message.client.users.cache.find(user => user.username == "Meg");
                 break;
             case "nin":
                 characters = [];
-                user = this.message.client.users.find(user => user.username == "Ninevah");
+                user = this.message.client.users.cache.find(user => user.username == "Ninevah");
                 break;
             case "rosa":
                 characters = [];
-                user = this.message.client.users.find(user => user.username == "ROSA");
+                user = this.message.client.users.cache.find(user => user.username == "ROSA");
                 break;
             default:
                 this.message.channel.send("Player not found.");
