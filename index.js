@@ -2,7 +2,8 @@ import { createRequire } from 'module';
 import { Client } from "discord.js";
 import BotCommands from "./modules/BotCommands.js";
 
-const Config = createRequire("./config.json");
+const require = createRequire(import.meta.url);
+const Config = require("./config.json");
 
 const client = new Client();
 
