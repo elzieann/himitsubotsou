@@ -49,23 +49,23 @@ class BotCommands {
         if (args.length > 0 && args[0].length > 0) {
             player = args[0].toLocaleLowerCase();
         } else {
-            switch (this.message.author.username) {
-                case "FrozenPeach":
+            switch (this.message.author.username.toLocaleLowerCase) {
+                case "frozenpeach":
                     player = "Frozen";
                     break;
-                case "Elzie":
+                case "belix":
                     player = "Elzie";
                     break;
-                case "dots":
+                case "stormbourne":
                     player = "Dots";
                     break;
-                case "ROSA":
+                case "rosa":
                     player = "Rosa";
                     break;
                 case "Meg":
                     player = "Meg";
                     break;
-                case "Nineveh":
+                case "wheelfor":
                     player = "Nin";
                     break;
             }
@@ -93,7 +93,7 @@ class BotCommands {
                 break;
             case "nin":
                 characters = [];
-                user = this.message.client.users.cache.find(user => user.username == "willfor");
+                user = this.message.client.users.cache.find(user => user.username == "wheelfor");
                 break;
             case "rosa":
                 characters = [];
