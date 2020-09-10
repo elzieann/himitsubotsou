@@ -27,6 +27,17 @@ export default class BotCommands {
 
         this.#characterEmbed(hanalanCommons, "#90ee90", "Current Hanalan commons members");
     }
+    
+    eina(args) {
+        var eina = [
+            { player: "Frozen", characters: ["Gebann", "Rae"] },
+            { player: "Nin", characters: ["Dagda"] },
+            { player: "Rosa", characters: ["April"] },
+            { player: "Dots", characters: ["ebony"] }
+        ]
+
+        this.#characterEmbed(eire, "#90ee90", "Current Eina members");
+    }
 
     characters(args) {
         var player = "";
