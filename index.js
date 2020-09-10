@@ -1,12 +1,12 @@
-import { Client } from "discord.js";
-import { VERSION, PREFIX, BOT_TOKEN } from "./config.json";
-import BotCommands from "./modules/BotCommands.js";
+const Discord = require("discord.js");
+const Config = require("./config.json");
+const BotCommands = require("./modules/BotCommands.js").default;
 
-const client = new Client();
+const client = new Discord.Client();
 
 client.on("ready", function() {
-    if (VERSION) {
-        client.channels.cache.find(channel => channel.name === "botspam").send("Bot loaded. Version: " + VERSION);
+    if (Config.VERSION) {
+        client.channels.cache.find(channel => channel.name === "botspam").send("Bot loaded. Version: " + Config.VERSION);
     }
 })
 
@@ -14,9 +14,9 @@ client.on("message", function(message) {
     try {
         if (message.author.bot) return;
 
-        if (!message.content.startsWith(PREFIX)) return;
+        if (!message.content.startsWith(Config.PREFIX)) return;
 
-        const commandBody = message.content.slice(PREFIX.length);
+        const commandBody = message.content.slice(Config.PREFIX.length);
         const args = commandBody.split(' ');
         const command = args.shift().toLowerCase();
 
@@ -30,4 +30,4 @@ client.on("message", function(message) {
     }
 });
 
-client.login(BOT_TOKEN);
+client.login(Config.BOT_TOKEN);
