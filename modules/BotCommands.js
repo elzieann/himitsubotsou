@@ -18,7 +18,7 @@ export default class BotCommands {
             .setColor("#fcba03")
             .setTitle("Current Franelcrew members");
 
-        this.#characterEmbed(franelcrew);
+        this.#characterEmbed(embed, franelcrew);
     }
 
     characters(args) {
@@ -115,7 +115,7 @@ export default class BotCommands {
         this.message.channel.send(embed);
     }
 
-    #characterEmbed(playerCharacters) {
+    #characterEmbed(embed, playerCharacters) {
         playerCharacters.sort(function(a, b) { 
             if (a.player < b.player) {
                 return -1;
