@@ -32,7 +32,7 @@ class BotCommands {
                 characterString += ", ";
             }, this);
 
-            embed.addField(playerCharacters.player, characterString)
+            embed.addField(playerCharacters.player, characterString.slice(0, -2))
         }, this);
 
         this.message.channel.send(embed);
@@ -88,7 +88,7 @@ class BotCommands {
             finalMessage += ", ";
         }, this)
 
-        this.message.channel.send(player + "'s characters: " + finalMessage);
+        this.message.channel.send(player + "'s characters: " + finalMessage.slice(0, -2));
     }
 }
 
