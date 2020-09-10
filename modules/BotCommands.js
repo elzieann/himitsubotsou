@@ -186,13 +186,13 @@ export default class BotCommands {
             }
         });
 
-        playerCharacters.forEach(function(pcs) {
+        playerCharacters.forEach(function(pc) {
             var characterString = "";
             
-            pcs.characters.sort();
+            pc.characters.sort();
 
             //For each character find a matching emoji if possible - must be the character's proper name
-            pcs.characters.forEach(function(character) {
+            pc.characters.forEach(function(character) {
                 var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
 
                 characterString += character;
@@ -204,7 +204,7 @@ export default class BotCommands {
                 characterString += ", ";
             }, this);
 
-            embed.addField(pcs.player, characterString.slice(0, -2))
+            embed.addField(pc.player, characterString.slice(0, -2))
         }, this);
 
         this.message.channel.send(embed);
