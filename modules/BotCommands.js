@@ -145,7 +145,18 @@ export default class BotCommands {
 
         //Find emojis for each character - emoji must be a custom emoji upload with the character's proper name
         characters.forEach(function(character) {
-            var emoji = this.message.client.emojis.cache.find(emoji =>emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0] || emoji.name === character.toLocaleLowerCase().split("/")[1] || emoji.name === character.toLocaleLowerCase().split(" (")[1].splice(0, -1));
+            //proper name
+            var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
+
+            //secondary name
+            if (emoji == undefined && character.includes("/")) {
+                emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[1]);
+            }
+            
+            //nickname
+            if (emoji == undefined && character.includes("(")) {
+                emoji = this.message.client.emoji.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("(")[1].slice(0, -1));
+            }
 
             finalMessage += character;
 
@@ -194,7 +205,18 @@ export default class BotCommands {
 
             //For each character find a matching emoji if possible - must be the character's proper name
             pc.characters.forEach(function(character) {
-                var emoji = this.message.client.emojis.cache.find(emoji =>emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0] || emoji.name === character.toLocaleLowerCase().split("/")[1] || emoji.name === character.toLocaleLowerCase().split(" (")[1].splice(0, -1));
+                //proper name
+                var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
+                
+                //secondary name
+                if (emoji == undefined && character.includes("/")) {
+                    emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[1]);
+                }
+                
+                //nickname
+                if (emoji == undefined && character.includes("(")) {
+                    emoji = this.message.client.emoji.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("(")[1].slice(0, -1));
+                }
 
                 characterString += character;
 
