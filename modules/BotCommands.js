@@ -41,7 +41,7 @@ export default class BotCommands {
     franelcrew(args) {
         var franelcrew = [
             { player: "Rosa", characters: ["Aileen", "Celeste", "Crionna", "Eabhan (Eabh)", "Korvin", "Maeryn/\"Ethniu\"", "Nessa", "Suaimeas"] },
-            { player: "Elzie", characters: ["Amalea", "Elliot", "Gabrial (Gabe)", "Jace", "Lauren", "Patience", "Sawyer"] },
+            { player: "Elzie", characters: ["Amalea", "Elliot", "Gaibrial (Gabe)", "Jace", "Lauren", "Patience", "Sawyer"] },
             { player: "Dots", characters: ["Faith", "Jonathan", "Kail", "Prudence"] },
             { player: "Nin", characters: ["Keagan", "Labhri"] },
             { player: "Meg", characters: ["Lawrence"] }
