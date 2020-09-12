@@ -155,7 +155,7 @@ export default class BotCommands {
             
             //nickname
             if (emoji == undefined && character.includes("(")) {
-                emoji = this.message.client.emoji.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("(")[1].slice(0, -1));
+                emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("(")[1].slice(0, -1));
             }
 
             finalMessage += character;
@@ -215,7 +215,7 @@ export default class BotCommands {
                 
                 //nickname
                 if (emoji == undefined && character.includes("(")) {
-                    emoji = this.message.client.emoji.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("(")[1].slice(0, -1));
+                    emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("(")[1].slice(0, -1));
                 }
 
                 characterString += character;
