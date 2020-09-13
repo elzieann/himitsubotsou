@@ -145,20 +145,9 @@ export default class BotCommands {
 
         //Find emojis for each character - emoji must be a custom emoji upload with the character's proper name
         characters.forEach(function(character) {
-            //proper name
-            var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
-
-            //secondary name
-            if (emoji == undefined && character.includes("/\"")) {
-                emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/\"")[1].slice(0, -1));
-            }
-            
-            //nickname
-            if (emoji == undefined && character.includes("(")) {
-                emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("(")[1].slice(0, -1));
-            }
-
             finalMessage += character;
+
+            emoji = this.#getCharacterEmoji(character);
 
             if (emoji != undefined) {
                 finalMessage += ` ${emoji}`;
@@ -205,20 +194,9 @@ export default class BotCommands {
 
             //For each character find a matching emoji if possible - must be the character's proper name
             pc.characters.forEach(function(character) {
-                //proper name
-                var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
-                
-                //secondary name
-                if (emoji == undefined && character.includes("/")) {
-                    emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/\"")[1].slice(0, -1));
-                }
-                
-                //nickname
-                if (emoji == undefined && character.includes("(")) {
-                    emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("(")[1].slice(0, -1));
-                }
-
                 characterString += character;
+
+                emoji = this.#getCharacterEmoji(character);
 
                 if (emoji != undefined) {
                     characterString += ` ${emoji}`;
@@ -231,5 +209,22 @@ export default class BotCommands {
         }, this);
 
         this.message.channel.send(embed);
+    }
+
+    #getCharacterEmoji(character) {
+        //proper name
+        var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
+        
+        //secondary name
+        if (emoji == undefined && character.includes("/")) {
+            emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/\"")[1].slice(0, -1));
+        }
+        
+        //nickname
+        if (emoji == undefined && character.includes("(")) {
+            emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("(")[1].slice(0, -1));
+        }
+
+        return emoji;
     }
 }
