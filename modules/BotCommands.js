@@ -47,7 +47,7 @@ export default class BotCommands {
             { player: "Meg", characters: ["Lawrence"] }
         ];
 
-        this.#characterEmbed(franelcrew, "#fcba03", "Current Franelcrew members");
+        this.#sendCharacterEmbed(franelcrew, "#fcba03", "Current Franelcrew members");
     }
 
     hanalan(args) {
@@ -58,7 +58,7 @@ export default class BotCommands {
             { player: "Rosa", characters: ["Annie", "Anton", "Nathan"] }
         ]
 
-        this.#characterEmbed(hanalanCommons, "#90ee90", "Current Hanalan commons members");
+        this.#sendCharacterEmbed(hanalanCommons, "#90ee90", "Current Hanalan commons members");
     }
     
     eina(args) {
@@ -69,7 +69,7 @@ export default class BotCommands {
             { player: "Dots", characters: ["ebony"] }
         ]
 
-        this.#characterEmbed(eina, "#bcf5f3", "Current Eina members");
+        this.#sendCharacterEmbed(eina, "#bcf5f3", "Current Eina members");
     }
 
     characters(args) {
@@ -172,7 +172,7 @@ export default class BotCommands {
     }
 
     //Takes a list of players/characters, a color, and a title, and creates a custom embed
-    #characterEmbed(playerCharacters, color, title) {
+    #sendCharacterEmbed(playerCharacters, color, title) {
         var embed =  new MessageEmbed()
             .setColor(color)
             .setTitle(title);
