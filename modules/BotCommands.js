@@ -1,6 +1,6 @@
 import { MessageEmbed } from "discord.js";
 
-export default class BotCommands {    
+export default class BotCommands {
     constructor(message) {
         this.message = message;
     }
@@ -8,7 +8,7 @@ export default class BotCommands {
     help(args) {
         //Thanks for the snippet https://stackoverflow.com/a/35033472
         const getAllMethods = (obj) => {
-            let props = []
+            let props = [];
         
             do {
                 const l = Object.getOwnPropertyNames(obj)
@@ -19,15 +19,15 @@ export default class BotCommands {
                         p !== 'constructor' &&           //not the constructor
                         (i == 0 || p !== arr[i - 1]) &&  //not overriding in this prototype
                         props.indexOf(p) === -1          //not overridden in a child
-                    )
-                props = props.concat(l)
+                    );
+                props = props.concat(l);
             }
             while (
                 (obj = Object.getPrototypeOf(obj)) &&   //walk-up the prototype chain
                 Object.getPrototypeOf(obj)              //not the the Object prototype methods (hasOwnProperty, etc...)
             )
         
-            return props
+            return props;
         }
         
         var embed = new MessageEmbed()
@@ -146,7 +146,7 @@ export default class BotCommands {
         //Find emojis for each character - emoji must be a custom emoji upload with the character's proper name
         characters.forEach(function(character) {
             finalMessage += character;
-
+            
             var emoji = this.#getCharacterEmoji(character);
 
             if (emoji != undefined) {
