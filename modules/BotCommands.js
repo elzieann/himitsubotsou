@@ -211,6 +211,7 @@ export default class BotCommands {
         this.message.channel.send(embed);
     }
 
+    //Gets the emoji based on a character name
     #getCharacterEmoji(character) {
         //proper name
         var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
