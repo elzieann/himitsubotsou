@@ -147,7 +147,7 @@ export default class BotCommands {
         characters.forEach(function(character) {
             finalMessage += character;
 
-            emoji = this.#getCharacterEmoji(character);
+            var emoji = this.#getCharacterEmoji(character);
 
             if (emoji != undefined) {
                 finalMessage += ` ${emoji}`;
@@ -196,7 +196,7 @@ export default class BotCommands {
             pc.characters.forEach(function(character) {
                 characterString += character;
 
-                emoji = this.#getCharacterEmoji(character);
+                var emoji = this.#getCharacterEmoji(character);
 
                 if (emoji != undefined) {
                     characterString += ` ${emoji}`;
