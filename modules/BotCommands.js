@@ -6,6 +6,10 @@ export default class BotCommands {
     }
 
     help(args) {
+        if (args[0] !== undefined) {
+            this['#' + args[0]]();
+        }
+
         //Thanks for the snippet https://stackoverflow.com/a/35033472
         const getAllMethods = (obj) => {
             let props = [];
@@ -50,15 +54,33 @@ export default class BotCommands {
         this.#sendCharacterEmbed(franelcrew, "#fcba03", "Current Franelcrew members", args[0]);
     }
 
+    #franelcrew() {
+        var embed = new MessageEmbed()
+            .setColor("#ff0000")
+            .setTitle("Help - Franelcrew")
+            .setDescription("Lists characters in the Franelcrew plotline.\n\nOptional Parameters: player name to filter by");
+
+        this.message.channel(embed);
+    }
+
     hanalan(args) {
         var hanalanCommons = [
             { player: "Frozen", characters: ["Lenore", "Inara", "Kimberly"] },
             { player: "Dots", characters: ["Mark", "Eri"] },
             { player: "Elzie", characters: ["Demi", "Daisy"] },
             { player: "Rosa", characters: ["Annie", "Anton", "Nathan"] }
-        ]
+        ];
 
         this.#sendCharacterEmbed(hanalanCommons, "#90ee90", "Current Hanalan commons members", args[0]);
+    }
+
+    #hanalan() {
+        var embed = new MessageEmbed()
+            .setColor("#ff0000")
+            .setTitle("Help - Franelcrew")
+            .setDescription("Lists characters in the Hanalan Commons plotline.\n\nOptional Parameters: player name to filter by");
+
+        this.message.channel(embed);
     }
 
     eina(args) {
@@ -67,9 +89,18 @@ export default class BotCommands {
             { player: "Nin", characters: ["Dagda"] },
             { player: "Rosa", characters: ["April"] },
             { player: "Dots", characters: ["ebony"] }
-        ]
+        ];
 
         this.#sendCharacterEmbed(eina, "#bcf5f3", "Current Eina members", args[0]);
+    }
+
+    #eina() {
+        var embed = new MessageEmbed()
+            .setColor("#ff0000")
+            .setTitle("Help - Franelcrew")
+            .setDescription("Lists characters in the Eina plotline.\n\nOptional Parameters: player name to filter by");
+
+        this.message.channel(embed);
     }
 
     characters(args) {
@@ -169,6 +200,15 @@ export default class BotCommands {
         }
 
         this.message.channel.send(embed);
+    }
+
+    #characters() {
+        var embed = new MessageEmbed()
+            .setColor("#ff0000")
+            .setTitle("Help - Franelcrew")
+            .setDescription("Lists characters played by the current user.\n\nOptional Parameters: alternative player name to filter by");
+
+        this.message.channel(embed);
     }
 
     //Takes a list of players/characters, a color, and a title, and creates a custom embed
