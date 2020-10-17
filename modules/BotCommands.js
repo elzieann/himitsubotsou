@@ -9,7 +9,7 @@ export default class BotCommands {
         //Thanks for the snippet https://stackoverflow.com/a/35033472
         const getAllMethods = (obj) => {
             let props = [];
-        
+
             do {
                 const l = Object.getOwnPropertyNames(obj)
                     .concat(Object.getOwnPropertySymbols(obj).map(s => s.toString()))
@@ -26,10 +26,10 @@ export default class BotCommands {
                 (obj = Object.getPrototypeOf(obj)) &&   //walk-up the prototype chain
                 Object.getPrototypeOf(obj)              //not the the Object prototype methods (hasOwnProperty, etc...)
             )
-        
+
             return props;
         }
-        
+
         var embed = new MessageEmbed()
             .setColor("#ff0000")
             .setTitle("Available commands")
@@ -47,7 +47,11 @@ export default class BotCommands {
             { player: "Meg", characters: ["Lawrence"] }
         ];
 
-        this.#sendCharacterEmbed(franelcrew, "#fcba03", "Current Franelcrew members");
+        if (args[0] === null) {
+            this.#characterEmbed(franelcrew, "#fcba03", "Current Franelcrew members");
+        } else {
+            this.#characterEmbed(franelcrew.filter(row => row.player === args[0]))
+        }
     }
 
     hanalan(args) {
@@ -60,7 +64,7 @@ export default class BotCommands {
 
         this.#sendCharacterEmbed(hanalanCommons, "#90ee90", "Current Hanalan commons members");
     }
-    
+
     eina(args) {
         var eina = [
             { player: "Frozen", characters: ["Gebann", "Rae"] },
@@ -122,7 +126,7 @@ export default class BotCommands {
                 characters = [];
                 user = this.message.client.users.cache.find(user => user.username == "belix");
                 color = "#008000";
-                break;                
+                break;
             case "meg":
                 characters = [];
                 user = this.message.client.users.cache.find(user => user.username == "Meg");
@@ -146,7 +150,7 @@ export default class BotCommands {
         //Find emojis for each character - emoji must be a custom emoji upload with the character's proper name
         characters.forEach(function(character) {
             finalMessage += character;
-            
+
             var emoji = this.#getCharacterEmoji(character);
 
             if (emoji != undefined) {
@@ -160,7 +164,7 @@ export default class BotCommands {
             .setTitle(player.slice(0, 1).toLocaleUpperCase() + player.slice(1).toLocaleLowerCase() + (player.slice(-1) == "s" ? "'" : "'s") + " characters")
             .setDescription(finalMessage.slice(0, -2));
 
-        if (color != "") {            
+        if (color != "") {
             embed.setColor(color);
         }
 
@@ -177,7 +181,7 @@ export default class BotCommands {
             .setColor(color)
             .setTitle(title);
 
-        playerCharacters.sort(function(a, b) { 
+        playerCharacters.sort(function(a, b) {
             if (a.player < b.player) {
                 return -1;
             } else if (a.player > b.player) {
@@ -189,7 +193,7 @@ export default class BotCommands {
 
         playerCharacters.forEach(function(pc) {
             var characterString = "";
-            
+
             pc.characters.sort();
 
             //For each character find a matching emoji if possible - must be the character's proper name
@@ -215,12 +219,12 @@ export default class BotCommands {
     #getCharacterEmoji(character) {
         //proper name
         var emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/")[0].split(" ")[0]);
-        
+
         //secondary name
         if (emoji == undefined && character.includes("/")) {
             emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("/\"")[1].slice(0, -1));
         }
-        
+
         //nickname
         if (emoji == undefined && character.includes("(")) {
             emoji = this.message.client.emojis.cache.find(emoji => emoji.name === character.toLocaleLowerCase().split("(")[1].slice(0, -1));
