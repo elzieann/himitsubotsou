@@ -5,24 +5,27 @@ import mysqlx from "@mysql/xdevapi";
 export default class BotCommands {
     constructor(message) {
         this.message = message;
+
+        this.sql = mysqlx.getClient(
+            { host: Config.MYSQL_HOST, user: Config.MYSQL_USER, password: Config.MYSQL_PASSWORD },
+            { pooling: { enabled: true, maxIdleTime: 30000, maxSize: 25, queueTimeout: 10000 } }
+        )
     }
 
     test(args) {
         var vm = this;
         var session;
 
-        mysqlx.getSession({
-            host: Config.MYSQL_HOST,
-            user: Config.MYSQL_USER,
-            password: Config.MYSQL_PASSWORD
+        this.sql.getSession({
         })
         .then(s => { session = s; return session.getSchema(Config.MYSQL_DATABASE) })
         .then(s => { return s.getTable("characters") })
         .then(t => t.select("name").orderBy("name").execute(row => {
             vm.message.channel.send(row[0]);
         }))
+        .then(() => session.close())
 
-        mysqlx.getSession({
+        this.sql.getSession({
             host: Config.MYSQL_HOST,
             user: Config.MYSQL_USER,
             password: Config.MYSQL_PASSWORD
@@ -37,6 +40,7 @@ export default class BotCommands {
 
             this.message.channel.send(characters);
         })
+        .then(() => session.close())
     }
 
     help(args) {
@@ -44,10 +48,10 @@ export default class BotCommands {
         if (args[0] !== undefined) {
             if (typeof this[argHelp] === 'function') {
                 this[argHelp]();
-            } else {                
+            } else {
                 this.message.channel.send("No additional help.");
             }
-                
+
             return;
         }
 
