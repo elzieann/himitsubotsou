@@ -17,15 +17,7 @@ export default class BotCommands {
         var session;
 
         this.sql.getSession()
-        .then(s => { session = s; return session.getSchema(Config.MYSQL_DATABASE) })
-        .then(s => { return s.getTable("characters") })
-        .then(t => t.select("name").orderBy("name").execute(row => {
-            vm.message.channel.send(row[0]);
-        }))
-        .then(() => session.close())
-
-        this.sql.getSession()
-        .then(s => { session = s; return session.getSchema(Config.MYSQL_DATABASE) })
+        .then(s => { session = s; return session.getSchema(Config.MYSQL_CHARDB) })
         .then(s => { return s.getTable("characters") })
         .then(t => t.select("name").orderBy("name").execute())
         .then(r => {
@@ -33,7 +25,8 @@ export default class BotCommands {
 
             var characters = rows.join(', ');
 
-            this.message.channel.send(characters);
+            this.message.channel.send(characters.substring(0,2000));
+            this.message.channel.send(characters.substring(2000, 3999));
         })
         .then(() => session.close())
     }
