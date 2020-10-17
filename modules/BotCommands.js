@@ -6,8 +6,15 @@ export default class BotCommands {
     }
 
     help(args) {
+        var argHelp = args[0] + "Help";
         if (args[0] !== undefined) {
-            this['#' + args[0]]();
+            if (typeof this[argHelp] === 'function') {
+                this[argHelp]();
+            } else {                
+                this.message.channel.send("No additional help.");
+            }
+                
+            return;
         }
 
         //Thanks for the snippet https://stackoverflow.com/a/35033472
@@ -22,7 +29,8 @@ export default class BotCommands {
                         typeof obj[p] === 'function' &&  //only the methods
                         p !== 'constructor' &&           //not the constructor
                         (i == 0 || p !== arr[i - 1]) &&  //not overriding in this prototype
-                        props.indexOf(p) === -1          //not overridden in a child
+                        props.indexOf(p) === -1 &&       //not overridden in a child
+                        !p.endsWith("Help")              //not a help function
                     );
                 props = props.concat(l);
             }
@@ -54,13 +62,13 @@ export default class BotCommands {
         this.#sendCharacterEmbed(franelcrew, "#fcba03", "Current Franelcrew members", args[0]);
     }
 
-    #franelcrew() {
+    franelcrewHelp() {
         var embed = new MessageEmbed()
             .setColor("#ff0000")
             .setTitle("Help - Franelcrew")
             .setDescription("Lists characters in the Franelcrew plotline.\n\nOptional Parameters: player name to filter by");
 
-        this.message.channel(embed);
+        this.message.channel.send(embed);
     }
 
     hanalan(args) {
@@ -74,13 +82,13 @@ export default class BotCommands {
         this.#sendCharacterEmbed(hanalanCommons, "#90ee90", "Current Hanalan commons members", args[0]);
     }
 
-    #hanalan() {
+    hanalanHelp() {
         var embed = new MessageEmbed()
             .setColor("#ff0000")
             .setTitle("Help - Franelcrew")
             .setDescription("Lists characters in the Hanalan Commons plotline.\n\nOptional Parameters: player name to filter by");
 
-        this.message.channel(embed);
+        this.message.channel.send(embed);
     }
 
     eina(args) {
@@ -94,13 +102,13 @@ export default class BotCommands {
         this.#sendCharacterEmbed(eina, "#bcf5f3", "Current Eina members", args[0]);
     }
 
-    #eina() {
+    einaHelp() {
         var embed = new MessageEmbed()
             .setColor("#ff0000")
             .setTitle("Help - Franelcrew")
             .setDescription("Lists characters in the Eina plotline.\n\nOptional Parameters: player name to filter by");
 
-        this.message.channel(embed);
+        this.message.channel.send(embed);
     }
 
     characters(args) {
@@ -202,13 +210,13 @@ export default class BotCommands {
         this.message.channel.send(embed);
     }
 
-    #characters() {
+    charactersHelp() {
         var embed = new MessageEmbed()
             .setColor("#ff0000")
             .setTitle("Help - Franelcrew")
             .setDescription("Lists characters played by the current user.\n\nOptional Parameters: alternative player name to filter by");
 
-        this.message.channel(embed);
+        this.message.channel.send(embed);
     }
 
     //Takes a list of players/characters, a color, and a title, and creates a custom embed
