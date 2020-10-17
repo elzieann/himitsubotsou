@@ -47,7 +47,7 @@ export default class BotCommands {
             { player: "Meg", characters: ["Lawrence"] }
         ];
 
-        if (args[0] === null) {
+        if (args[0] === undefined) {
             this.#sendCharacterEmbed(franelcrew, "#fcba03", "Current Franelcrew members");
         } else {
             this.#sendCharacterEmbed(franelcrew.filter(row => row.player === args[0]), "#fcba03", "Current Franelcrew members");
