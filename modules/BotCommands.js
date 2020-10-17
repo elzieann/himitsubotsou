@@ -1,8 +1,42 @@
 import { MessageEmbed } from "discord.js";
+import { Config } from "../config.js";
+import mysqlx from "@mysql/xdevapi";
 
 export default class BotCommands {
     constructor(message) {
         this.message = message;
+    }
+
+    test(args) {
+        var vm = this;
+        var session;
+
+        mysqlx.getSession({
+            host: Config.MYSQL_HOST,
+            user: Config.MYSQL_USER,
+            password: Config.MYSQL_PASSWORD
+        })
+        .then(s => { session = s; return session.getSchema(Config.MYSQL_DATABASE) })
+        .then(s => { return s.getTable("characters") })
+        .then(t => t.select("name").orderBy("name").execute(row => {
+            vm.message.channel.send(row[0]);
+        }))
+
+        mysqlx.getSession({
+            host: Config.MYSQL_HOST,
+            user: Config.MYSQL_USER,
+            password: Config.MYSQL_PASSWORD
+        })
+        .then(s => { session = s; return session.getSchema(Config.MYSQL_DATABASE) })
+        .then(s => { return s.getTable("characters") })
+        .then(t => t.select("name").orderBy("name").execute())
+        .then(r => {
+            var rows = r.fetchAll();
+
+            var characters = rows.join(', ');
+
+            this.message.channel.send(characters);
+        })
     }
 
     help(args) {
