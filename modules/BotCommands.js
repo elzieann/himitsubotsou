@@ -48,9 +48,9 @@ export default class BotCommands {
         ];
 
         if (args[0] === null) {
-            this.#characterEmbed(franelcrew, "#fcba03", "Current Franelcrew members");
+            this.#sendCharacterEmbed(franelcrew, "#fcba03", "Current Franelcrew members");
         } else {
-            this.#characterEmbed(franelcrew.filter(row => row.player === args[0]), "#fcba03", "Current Franelcrew members");
+            this.#sendCharacterEmbed(franelcrew.filter(row => row.player === args[0]), "#fcba03", "Current Franelcrew members");
         }
     }
 
