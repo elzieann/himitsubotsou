@@ -18,7 +18,7 @@ export default class BotCommands {
 
         this.sql.getSession()
         .then(s => { session = s; return session.getSchema(Config.MYSQL_CHARDB) })
-        .then(s => { return s.getTable("characters") })
+        .then(s => { return s.getTable("Characters") })
         .then(t => t.select("name").orderBy("name").execute())
         .then(r => {
             var rows = r.fetchAll();
@@ -34,7 +34,7 @@ export default class BotCommands {
     help(args) {
         if (args[0] !== undefined) {
             var argHelp = args[0] + "Help";
-            
+
             if (typeof this[argHelp] === 'function') {
                 this[argHelp]();
             } else {
