@@ -39,8 +39,9 @@ export default class BotCommands {
     }
 
     help(args) {
-        var argHelp = args[0] + "Help";
         if (args[0] !== undefined) {
+            var argHelp = args[0] + "Help";
+            
             if (typeof this[argHelp] === 'function') {
                 this[argHelp]();
             } else {
