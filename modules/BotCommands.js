@@ -16,8 +16,7 @@ export default class BotCommands {
         var vm = this;
         var session;
 
-        this.sql.getSession({
-        })
+        this.sql.getSession()
         .then(s => { session = s; return session.getSchema(Config.MYSQL_DATABASE) })
         .then(s => { return s.getTable("characters") })
         .then(t => t.select("name").orderBy("name").execute(row => {
@@ -25,11 +24,7 @@ export default class BotCommands {
         }))
         .then(() => session.close())
 
-        this.sql.getSession({
-            host: Config.MYSQL_HOST,
-            user: Config.MYSQL_USER,
-            password: Config.MYSQL_PASSWORD
-        })
+        this.sql.getSession()
         .then(s => { session = s; return session.getSchema(Config.MYSQL_DATABASE) })
         .then(s => { return s.getTable("characters") })
         .then(t => t.select("name").orderBy("name").execute())
