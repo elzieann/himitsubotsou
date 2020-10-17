@@ -47,11 +47,7 @@ export default class BotCommands {
             { player: "Meg", characters: ["Lawrence"] }
         ];
 
-        if (args[0] === undefined) {
-            this.#sendCharacterEmbed(franelcrew, "#fcba03", "Current Franelcrew members");
-        } else {
-            this.#sendCharacterEmbed(franelcrew.filter(row => row.player === args[0]), "#fcba03", "Current Franelcrew members");
-        }
+        this.#sendCharacterEmbed(franelcrew, "#fcba03", "Current Franelcrew members", args[0]);
     }
 
     hanalan(args) {
@@ -62,7 +58,7 @@ export default class BotCommands {
             { player: "Rosa", characters: ["Annie", "Anton", "Nathan"] }
         ]
 
-        this.#sendCharacterEmbed(hanalanCommons, "#90ee90", "Current Hanalan commons members");
+        this.#sendCharacterEmbed(hanalanCommons, "#90ee90", "Current Hanalan commons members", args[0]);
     }
 
     eina(args) {
@@ -73,7 +69,7 @@ export default class BotCommands {
             { player: "Dots", characters: ["ebony"] }
         ]
 
-        this.#sendCharacterEmbed(eina, "#bcf5f3", "Current Eina members");
+        this.#sendCharacterEmbed(eina, "#bcf5f3", "Current Eina members", args[0]);
     }
 
     characters(args) {
@@ -176,7 +172,11 @@ export default class BotCommands {
     }
 
     //Takes a list of players/characters, a color, and a title, and creates a custom embed
-    #sendCharacterEmbed(playerCharacters, color, title) {
+    #sendCharacterEmbed(playerCharacters, color, title, filterPlayer = undefined) {
+        if (filterPlayer !== undefined) {
+            playerCharacters = playerCharacters.filter(row => row.player === args[0])
+        }
+
         var embed =  new MessageEmbed()
             .setColor(color)
             .setTitle(title);
