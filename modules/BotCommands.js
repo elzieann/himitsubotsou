@@ -174,7 +174,7 @@ export default class BotCommands {
     //Takes a list of players/characters, a color, and a title, and creates a custom embed
     #sendCharacterEmbed(playerCharacters, color, title, filterPlayer = undefined) {
         if (filterPlayer !== undefined) {
-            playerCharacters = playerCharacters.filter(row => row.player === filterPlayer)
+            playerCharacters = playerCharacters.filter(row => row.player.toLocaleLowerCase() === filterPlayer.toLocaleLowerCase())
         }
 
         var embed =  new MessageEmbed()
